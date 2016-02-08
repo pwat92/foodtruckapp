@@ -1,0 +1,8 @@
+<% if truck_signed_in? %>
+  <h1>I am Signed in</h1>
+  <%= link_to 'Sign_out', destroy_truck_session_path,  method: :delete %>
+  <%= link_to 'Options', edit_truck_registration_path%>
+<%else%>
+  <%= link_to('new_truck', new_truck_registration_path) %>
+  <%= link_to('sign_in', new_truck_session_path) %>  
+<%end%>
