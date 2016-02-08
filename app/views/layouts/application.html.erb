@@ -7,6 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<ul>
+  <% if truck_signed_in? %>
+    <li>
+      <%= link_to('Sign_out', destroy_truck_session_path,  method: :delete) %>
+    </li>
+    <li>
+      <%= link_to('Options', edit_truck_registration_path)%>
+    </li>
+    <li>
+      <%= link_to('my_companies', companies_path)%>
+    </li>
+    <li>
+      <%= link_to('add_companies', new_company_path)%>
+    </li>
+  <%else%>
+    <li>
+      truck Driver? <%= link_to('sign_up', new_truck_registration_path) %>
+    </li>
+    <li>
+      <%= link_to('sign_in', new_truck_session_path) %>
+    </li>
+  <%end%>
+</ul>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>
