@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.where(truck_id: current_truck.id)
   end
 
   # GET /companies/1
@@ -16,8 +16,6 @@ class CompaniesController < ApplicationController
   def new
     if truck_signed_in?
      @company = Company.new
-     #@company.truck_id = current_truck.id
-     puts "Truck Id: #{@company.truck_id}"
     else
       redirect_to new_user_session_path, notice: 'You are not logged in.'
     end
