@@ -14,7 +14,13 @@ class CompaniesController < ApplicationController
 
   # GET /companies/new
   def new
-    @company = Company.new
+    if truck_signed_in?
+     @company = Company.new
+     #@company.truck_id = current_truck.id
+     puts "Truck Id: #{@company.truck_id}"
+    else
+      redirect_to new_user_session_path, notice: 'You are not logged in.'
+    end
   end
 
   # GET /companies/1/edit
